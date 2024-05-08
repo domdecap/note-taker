@@ -3,28 +3,28 @@ const { v4: uuidv4 } = require('uuid');
 const {
   readFromFile,
   readAndAppend,
-  // writeToFile,
+  writeToFile,
 } = require('../helpers/fsUtils');
 
 notes.get('/', (req, res) => {
   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
-// notes.delete('/:id', (req, res) => {
-//   const noteId = req.params.tip_id;
-//   readFromFile('./db/db.json')
-//     .then((data) => JSON.parse(data))
-//     .then((json) => {
-//       // Make a new array of all tips except the one with the ID provided in the URL
-//       const result = json.filter((note) => note.id !== noteId);
+notes.delete('/:id', (req, res) => {
+  const noteId = req.params.id;
+  readFromFile('./db/db.json')
+    .then((data) => JSON.parse(data))
+    .then((json) => {
+      // Make a new array of all tips except the one with the ID provided in the URL
+      const result = json.filter((note) => note.id !== noteId);
 
-//       // Save that array to the filesystem
-//       writeToFile('./db/db.json', result);
+      // Save that array to the filesystem
+      writeToFile('./db/db.json', result);
 
-//       // Respond to the DELETE request
-//       res.json(`Item ${noteId} has been deleted 🗑️`);
-//     });
-// });
+      // Respond to the DELETE request
+      res.json(`Item ${noteId} has been deleted 🗑️`);
+    });
+});
 
 notes.post('/', (req, res) => {
   console.log(req.body);
