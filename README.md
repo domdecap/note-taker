@@ -28,6 +28,8 @@ After following installation instructions, run ```node server.js``` in the integ
 ## Demo
 
 
+https://github.com/domdecap/note-taker/assets/33850184/6b7a2f6d-7732-4aea-a704-00fd3c3bad2d
+
 
 ## Contributions
 
